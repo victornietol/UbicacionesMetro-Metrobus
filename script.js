@@ -30,11 +30,12 @@ function getCurrentLocation() {
 }
 
 // Agregar un marcador
-function addMarker(latitude, longitude, textPopup, map) {
-    L.marker([latitude, longitude])
-        .addTo(map)
-        .bindPopup(textPopup)
-        .openPopup();
+function addMarker(latitude, longitude, textPopup, map, markerGroup) {
+    const marker = L.marker([latitude, longitude])
+                        .addTo(map)
+                        .bindPopup(textPopup)
+                        .openPopup();
+    markerGroup.addLayer(marker);
 }
 
 function addCircleMarker(latitude, longitude, textPopup, map) {
@@ -49,8 +50,21 @@ function addCircleMarker(latitude, longitude, textPopup, map) {
         .openPopup();
 }
 
+// Limpiar y actualizar marcadores
+function updateMarkers(newCoords, markerGroup, map) {
+    markerGroup.clearLayers();
+    newCoords.forEach(coord => {
+        const marker = L.marker([coord.latitude, coord.longitude])
+                            .addTo(map)
+                            .bindPopup(coord.textPopup)
+                            .openPopup();
+        markerGroup.addLayer(marker);
+    });
+}
+
 // Crear el mapa centrado en la ubicacion actual
 let map;
+let markerGroup;
 async function initMap() {
     const currLocation = await getCurrentLocation();
     if (!currLocation) {
@@ -61,7 +75,8 @@ async function initMap() {
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '© OpenStreetMap contributors'
     }).addTo(map);
-    addMarker(currLocation.lat, currLocation.lon, "<b>Tu ubicación</b>", map);
+    markerGroup = L.layerGroup().addTo(map);
+    addMarker(currLocation.lat, currLocation.lon, "<b>Tu ubicación</b>", map, markerGroup);
 }
 
 
