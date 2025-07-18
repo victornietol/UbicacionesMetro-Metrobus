@@ -1,20 +1,86 @@
-// Crear el mapa centrado en CDMX
-var map = L.map('map').setView([19.4326, -99.1332], 15); // latitud, longitud, zoom
+const options = {
+    enableHighAccuracy: true,
+    timeout: 5000,
+    maximumAge: 0,
+};
 
-// Cargar mapa
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '© OpenStreetMap contributors'
-}).addTo(map);
+function error(err) {
+    document.getElementById("error_current_ubi").innerText = "Error al obtener la ubicacion, posiblemente el navegador no es compatible.";
+    console.warn(`ERROR(${err.code}): ${err.message}`);
+}
+
+// Obtener ubicacion actual
+function getCurrentLocation() {
+    // Devuelve longitud y latitud
+    return new Promise((resolve) => {
+        if (!navigator.geolocation) {
+            resolve(null);
+        }
+        navigator.geolocation.getCurrentPosition(
+            pos => {
+                const crd = pos.coords;
+                const currLon = crd.longitude;
+                const currLat = crd.latitude;
+                resolve({lon: currLon, lat:currLat});
+            },
+            error,
+            options
+        );
+    });
+}
 
 // Agregar un marcador
-function addMarker(latitude, longitude, textPopup) {
+function addMarker(latitude, longitude, textPopup, map) {
     L.marker([latitude, longitude])
         .addTo(map)
         .bindPopup(textPopup)
         .openPopup();
 }
 
-addMarker(19.4326, -99.1332, "<b>Centro de CDMX</b><br>Aquí está el Zócalo.");
+function addCircleMarker(latitude, longitude, textPopup, map) {
+    L.circleMarker([latitude, longitude],{
+            color: 'red',
+            radius: 5,
+            fillColor: '#f03',
+            fillOpacity: 0.5
+        })
+        .addTo(map)
+        .bindPopup(textPopup)
+        .openPopup();
+}
+
+// Crear el mapa centrado en la ubicacion actual
+let map;
+async function initMap() {
+    const currLocation = await getCurrentLocation();
+    if (!currLocation) {
+        // El error se indica en la funcion error
+        return;
+    }
+    map = L.map('map').setView([currLocation.lat, currLocation.lon], 15); // latitud, longitud, zoom
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+    addMarker(currLocation.lat, currLocation.lon, "<b>Tu ubicación</b>", map);
+}
+
+
+
+
+initMap();
+
+/*
+const currLocation = getCurrentLocation();
+var map1 = L.map('map').setView([currLocation.lat, currLocation.lon], 15); // latitud, longitud, zoom
+
+// Cargar mapa
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap contributors'
+}).addTo(map);
+
+addMarker(currLocation.lat, currLocation.lon, "Tu ubicación");
+*/
+
 
 // Agregar un marcador
 //var marker = L.marker([19.4326, -99.1332]).addTo(map);
