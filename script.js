@@ -51,7 +51,7 @@ function addCircleMarker(latitude, longitude, textPopup, map) {
 }
 
 // Limpiar y actualizar marcadores
-function updateMarkers(newCoords, markerGroup, map) {
+function updateMarkers(newCoords, markerGroup, map) { // newCoords debe ser un array que contiene hashmaps
     markerGroup.clearLayers();
     newCoords.forEach(coord => {
         const marker = L.marker([coord.latitude, coord.longitude])
@@ -79,6 +79,28 @@ async function initMap() {
     addMarker(currLocation.lat, currLocation.lon, "<b>Tu ubicación</b>", map, markerGroup);
 }
 
+// Actualizar posicion de la camara o visualizacion del mapa
+function updateViewPositionMap(latitude, longitude) {
+    map.flyTo([latitude, longitude], 15);
+}
+
+// Actualizar ubicacion actual
+async function updateCurrentLocation() {
+    const currLocation = await getCurrentLocation();
+    if (!currLocation) {
+        // El error se indica en la funcion error
+        return;
+    }
+    const newCoords = [
+        {
+        latitude: currLocation.lat, 
+        longitude: currLocation.lon, 
+        textPopup: "<b>Tu ubicación</b>"
+        },
+    ]
+    updateMarkers(newCoords, markerGroup, map); // Actualizar markers
+    updateViewPositionMap(currLocation.lat, currLocation.lon);
+}
 
 
 
