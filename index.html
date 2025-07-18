@@ -6,10 +6,41 @@
     <title>Ubicaciones METRO y METROBUS</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
 </head>
 <body>
     <h1>Ubicaciones Metro y Metrobus</h1>
     <main>
+
+        <form>
+            <div class="container">
+                <div class="row">
+                    <section class="col-md-6 col-lg-4 card card-body m-1 d-flex flex-column align-items-center justify-content-center bg-light efecto-card-glow">
+                        <div class="px-md-5 text-center">
+                            <label><b>1)</b> Usar ubicación actual</label>
+                        </div>
+                        <div>
+                            <button type="button" onclick="" class="btn btn-dark btn-hover-efecto mt-2" style="background: #020059;">
+                                Actualizar ubicación
+                            </button>
+                        </div>
+                    </section>
+                    
+                    <section class="col-md-6 col-lg-4 card card-body m-1 d-flex flex-column align-items-center justify-content-center bg-light efecto-card-glow">
+                        <div class="px-md-5 text-center">
+                            <label><b>2)</b> Introducir ubicación</label>
+                        </div>
+                        <div class="col-12 col-md-12 mt-2">
+                            <input class="form-control" type="text" id="inputLocation" placeholder="Ingresa la dirección">
+                        </div>
+                        <button type="button" onclick="" class="btn btn-dark btn-hover-efecto mt-2" style="background: #020059;">
+                            Buscar
+                        </button>
+                    </section>
+                </div>
+            </div>
+        </form>
+
         <div>
             <p id="error_current_ubi"></p>
         </div>
@@ -18,6 +49,6 @@
 
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script src="script.js"></script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
 </body>
 </html>

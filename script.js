@@ -83,27 +83,3 @@ async function initMap() {
 
 
 initMap();
-
-/*
-const currLocation = getCurrentLocation();
-var map1 = L.map('map').setView([currLocation.lat, currLocation.lon], 15); // latitud, longitud, zoom
-
-// Cargar mapa
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '© OpenStreetMap contributors'
-}).addTo(map);
-
-addMarker(currLocation.lat, currLocation.lon, "Tu ubicación");
-*/
-
-
-// Agregar un marcador
-//var marker = L.marker([19.4326, -99.1332]).addTo(map);
-/*
-L.marker([19.4326, -99.1332])
-    .addTo(map)
-    .bindPopup("<b>Centro de CDMX</b><br>Aquí está el Zócalo.")
-    .openPopup();
-*/
-// Agregar un popup
-//marker.bindPopup("<b>Centro de CDMX</b><br>Aquí está el Zócalo.").openPopup();
