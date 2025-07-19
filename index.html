@@ -33,7 +33,7 @@
                         <div class="col-12 col-md-12 mt-2">
                             <input class="form-control" type="text" id="inputLocation" placeholder="Ingresa la dirección">
                         </div>
-                        <button type="button" onclick="" class="btn btn-dark btn-hover-efecto mt-2" style="background: #020059;">
+                        <button type="button" onclick="showInputLocation()" class="btn btn-dark btn-hover-efecto mt-2" style="background: #020059;">
                             Buscar
                         </button>
                     </section>
@@ -41,9 +41,10 @@
             </div>
         </form>
 
-        <div>
-            <p id="error_current_ubi"></p>
-        </div>
+        <div class="text-center mt-3" id="error_current_ubi"></div>
+
+        <div id="spinner_loading"></div>
+
         <div id="map"></div>
     </main>
 
