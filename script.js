@@ -13,6 +13,16 @@ function showSpinner(state) {
     }
 }
 
+// Leer archivo json con estaciones
+async function readJSON(route) {
+    return fetch(route).then(response => {
+        if (!response.ok) {
+            throw new Error("No se realizó la carga.");
+        }
+        return response.json();
+    });
+}
+
 const options = {
     enableHighAccuracy: true,
     timeout: 5000,
@@ -53,33 +63,36 @@ function addMarker(latitude, longitude, textPopup, map, markerGroup) {
     markerGroup.addLayer(marker);
 }
 
-function addCircleMarker(latitude, longitude, textPopup, map) {
-    L.circleMarker([latitude, longitude],{
-            color: 'red',
-            radius: 5,
-            fillColor: '#f03',
-            fillOpacity: 0.5
-        })
-        .addTo(map)
-        .bindPopup(textPopup)
-        .openPopup();
+function addCircleMarker(latitude, longitude, textPopup, map, markerGroup) {
+    const marker = L.circleMarker([latitude, longitude],{
+                            color: 'red',
+                            radius: 5,
+                            fillColor: '#f03',
+                            fillOpacity: 0.5
+                        })
+                        .addTo(map)
+                        .bindPopup(textPopup)
+                        .openPopup();
+    markerGroup.addLayer(marker);
 }
 
-// Limpiar y actualizar marcadores
-function updateMarkers(newCoords, markerGroup, map) { // newCoords debe ser un array que contiene hashmaps
-    markerGroup.clearLayers();
-    newCoords.forEach(coord => {
-        const marker = L.marker([coord.latitude, coord.longitude])
-                            .addTo(map)
-                            .bindPopup(coord.textPopup)
-                            .openPopup();
-        markerGroup.addLayer(marker);
+function createMarkersStations(stations, map, markerGroup) { // stations es un array de hashmaps, es decir lo que se cargo el archivo json
+    stations.forEach(station => {
+        const name = Object.keys(station)[0];
+        const tagName = `<b>${name}</b>`;
+        const lat = station[name][0];
+        const lon = station[name][1];
+        addMarker(lat, lon, tagName, map, markerGroup);
     });
 }
 
-// Crear el mapa centrado en la ubicacion actual
+
+// Variables globales
 let map;
 let markerGroup;
+let stationsMetro;
+
+// Crear el mapa centrado en la ubicacion actual
 async function initMap() {
     showSpinner(true);
     const currLocation = await getCurrentLocation();
@@ -92,7 +105,11 @@ async function initMap() {
         attribution: '© OpenStreetMap contributors'
     }).addTo(map);
     markerGroup = L.layerGroup().addTo(map);
-    addMarker(currLocation.lat, currLocation.lon, "<b>Tu ubicación</b>", map, markerGroup);
+
+    stationsMetro = await readJSON("info/estaciones_metro_cdmx.json"); // Obtener estaciones del Metro
+    createMarkersStations(stationsMetro, map, markerGroup); // Crear markers de las estaciones del Metro
+    addMarker(currLocation.lat, currLocation.lon, "<b>Tu ubicación</b>", map, markerGroup); // Crear marker de mi ubicacion actual
+    updateViewPositionMap(currLocation.lat, currLocation.lon); // Centrar la vista en la posicion actual
     showSpinner(false);
 }
 
@@ -109,14 +126,9 @@ async function updateCurrentLocation() {
         // El error se indica en la funcion error
         return;
     }
-    const newCoords = [
-        {
-        latitude: currLocation.lat, 
-        longitude: currLocation.lon, 
-        textPopup: "<b>Tu ubicación</b>"
-        },
-    ]
-    updateMarkers(newCoords, markerGroup, map); // Actualizar markers
+    markerGroup.clearLayers(); // Limpiando markers
+    createMarkersStations(stationsMetro, map, markerGroup); // Crear markers de las estaciones del Metro de nuevo
+    addMarker(currLocation.lat, currLocation.lon, "<b>Tu ubicación</b>", map, markerGroup) // Agregando marker actual
     updateViewPositionMap(currLocation.lat, currLocation.lon);
     showSpinner(false);
 }
@@ -140,19 +152,14 @@ async function getInputLocation(inputLocation) {
     }
 }
 
+// Crea los markers para la ubicacion ingresa
 async function showInputLocation() {
     showSpinner(true);
     const inputLocation = document.getElementById("inputLocation").value;
     const inputCoords = await getInputLocation(inputLocation);
-    const newCoords = [
-        {
-            latitude: inputCoords.lat,
-            longitude: inputCoords.lon,
-            textPopup: "<b>Ubicación aproximada búscada.</b>"
-        },
-        // Aqui agregar las estaciones de transporte necesarias o puedo crearlas todas al inicio
-    ];
-    updateMarkers(newCoords, markerGroup, map);
+    markerGroup.clearLayers(); // Limpiando markers
+    createMarkersStations(stationsMetro, map, markerGroup); // Crear markers de las estaciones del Metro de nuevo
+    addMarker(inputCoords.lat, inputCoords.lon, "<b>Ubicación aproximada indicada.</b>", map, markerGroup) // Creando marker de posicion indicada
     updateViewPositionMap(inputCoords.lat, inputCoords.lon);
     showSpinner(false);
 }
