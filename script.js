@@ -66,7 +66,7 @@ function addMarker(latitude, longitude, textPopup, map, markerGroup) {
 function addCircleMarker(latitude, longitude, textPopup, map, markerGroup) {
     const marker = L.circleMarker([latitude, longitude],{
                             color: 'red',
-                            radius: 5,
+                            radius: 7,
                             fillColor: '#f03',
                             fillOpacity: 0.5
                         })
@@ -108,7 +108,7 @@ async function initMap() {
 
     stationsMetro = await readJSON("info/estaciones_metro_cdmx.json"); // Obtener estaciones del Metro
     createMarkersStations(stationsMetro, map, markerGroup); // Crear markers de las estaciones del Metro
-    addMarker(currLocation.lat, currLocation.lon, "<b>Tu ubicación</b>", map, markerGroup); // Crear marker de mi ubicacion actual
+    addCircleMarker(currLocation.lat, currLocation.lon, "<b>Tu ubicación</b>", map, markerGroup); // Crear marker de mi ubicacion actual
     updateViewPositionMap(currLocation.lat, currLocation.lon); // Centrar la vista en la posicion actual
     showSpinner(false);
 }
@@ -128,7 +128,7 @@ async function updateCurrentLocation() {
     }
     markerGroup.clearLayers(); // Limpiando markers
     createMarkersStations(stationsMetro, map, markerGroup); // Crear markers de las estaciones del Metro de nuevo
-    addMarker(currLocation.lat, currLocation.lon, "<b>Tu ubicación</b>", map, markerGroup) // Agregando marker actual
+    addCircleMarker(currLocation.lat, currLocation.lon, "<b>Tu ubicación</b>", map, markerGroup) // Agregando marker actual
     updateViewPositionMap(currLocation.lat, currLocation.lon);
     showSpinner(false);
 }
@@ -159,7 +159,7 @@ async function showInputLocation() {
     const inputCoords = await getInputLocation(inputLocation);
     markerGroup.clearLayers(); // Limpiando markers
     createMarkersStations(stationsMetro, map, markerGroup); // Crear markers de las estaciones del Metro de nuevo
-    addMarker(inputCoords.lat, inputCoords.lon, "<b>Ubicación aproximada indicada.</b>", map, markerGroup) // Creando marker de posicion indicada
+    addCircleMarker(inputCoords.lat, inputCoords.lon, "<b>Ubicación aproximada indicada.</b>", map, markerGroup) // Creando marker de posicion indicada
     updateViewPositionMap(inputCoords.lat, inputCoords.lon);
     showSpinner(false);
 }

@@ -1,3 +1,8 @@
+:root {
+    --btn-color-main: #d14747;
+    --btn-color-secondary: #cf4e4e;
+}
+
 #map {
     height: 50vh;
 }
@@ -9,4 +14,20 @@
 .btn-hover-efecto:hover {
     transform: scale(1.02);
     box-shadow: 0 10px 8px rgba(0,0,0,0.2);
+}
+
+.btn.btn-main {
+    background-color: var(--btn-color-main);
+    color: white;
+    border: none;
+}
+
+.btn.btn-dark {
+    background-color: var(--btn-color-main);
+    color: white;
+    border: none;
+}
+
+.navbar.navbar-custom1 {
+    background-color: var(--btn-color-main) !important;
 }
