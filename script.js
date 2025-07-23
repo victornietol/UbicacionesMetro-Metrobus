@@ -77,9 +77,11 @@ function addCircleMarker(latitude, longitude, textPopup, map, markerGroup) {
 }
 
 function createMarkersStations(stations, map, markerGroup) { // stations es un array de hashmaps, es decir lo que se cargo el archivo json
+    const radio = document.getElementById("option_metro");
+    const type = radio.checked ? "Metro" : "Metrobús"
     stations.forEach(station => {
         const name = Object.keys(station)[0];
-        const tagName = `<b>${name}</b>`;
+        const tagName = `<b>${type} ${name}</b>`;
         const lat = station[name][0];
         const lon = station[name][1];
         addMarker(lat, lon, tagName, map, markerGroup);
@@ -91,6 +93,7 @@ function createMarkersStations(stations, map, markerGroup) { // stations es un a
 let map;
 let markerGroup;
 let stationsMetro;
+let stationsMetrobus;
 
 // Crear el mapa centrado en la ubicacion actual
 async function initMap() {
@@ -106,16 +109,39 @@ async function initMap() {
     }).addTo(map);
     markerGroup = L.layerGroup().addTo(map);
 
-    stationsMetro = await readJSON("info/estaciones_metro_cdmx.json"); // Obtener estaciones del Metro
+    stationsMetro = await readJSON("info/estaciones_metro_cdmx.json"); // Obtener estaciones del Metro, cargar al iniciar
     createMarkersStations(stationsMetro, map, markerGroup); // Crear markers de las estaciones del Metro
     addCircleMarker(currLocation.lat, currLocation.lon, "<b>Tu ubicación</b>", map, markerGroup); // Crear marker de mi ubicacion actual
     updateViewPositionMap(currLocation.lat, currLocation.lon); // Centrar la vista en la posicion actual
     showSpinner(false);
+    getStations();
+}
+
+// Verificar que opcion de transporte esta activa para cargar ubicaciones
+async function getStations() {
+    if(stationsMetro==null) {
+        stationsMetro = await readJSON("info/estaciones_metro_cdmx.json");
+    }
+    if(stationsMetrobus==null) {
+        stationsMetrobus = await readJSON("info/estaciones_metrobus_cdmx.json");
+    }
 }
 
 // Actualizar posicion de la camara o visualizacion del mapa
 function updateViewPositionMap(latitude, longitude) {
     map.flyTo([latitude, longitude], 15);
+}
+
+// Verificar que opcion de transporte esta activa
+function verifyTransportOption() {
+    const radioMetro = document.getElementById("option_metro");
+    const radioMetrobus = document.getElementById("option_metrobus");
+    if(radioMetro.checked) {
+        return stationsMetro;
+    }
+    if(radioMetrobus.checked) {
+        return stationsMetrobus;
+    }
 }
 
 // Actualizar ubicacion actual
@@ -126,8 +152,9 @@ async function updateCurrentLocation() {
         // El error se indica en la funcion error
         return;
     }
+    getStations(); // Cargar estaciones de metrobus si no se han cargado
     markerGroup.clearLayers(); // Limpiando markers
-    createMarkersStations(stationsMetro, map, markerGroup); // Crear markers de las estaciones del Metro de nuevo
+    createMarkersStations(verifyTransportOption(), map, markerGroup); // Crear markers de las estaciones segun el transporte
     addCircleMarker(currLocation.lat, currLocation.lon, "<b>Tu ubicación</b>", map, markerGroup) // Agregando marker actual
     updateViewPositionMap(currLocation.lat, currLocation.lon);
     showSpinner(false);
@@ -158,7 +185,7 @@ async function showInputLocation() {
     const inputLocation = document.getElementById("inputLocation").value;
     const inputCoords = await getInputLocation(inputLocation);
     markerGroup.clearLayers(); // Limpiando markers
-    createMarkersStations(stationsMetro, map, markerGroup); // Crear markers de las estaciones del Metro de nuevo
+    createMarkersStations(verifyTransportOption(), map, markerGroup); // Crear markers de las estaciones del Metro o Metrobus
     addCircleMarker(inputCoords.lat, inputCoords.lon, "<b>Ubicación aproximada indicada.</b>", map, markerGroup) // Creando marker de posicion indicada
     updateViewPositionMap(inputCoords.lat, inputCoords.lon);
     showSpinner(false);

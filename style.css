@@ -31,3 +31,8 @@
 .navbar.navbar-custom1 {
     background-color: var(--btn-color-main) !important;
 }
+
+.radio-container label,
+.radio-container input {
+    cursor: pointer;
+}
