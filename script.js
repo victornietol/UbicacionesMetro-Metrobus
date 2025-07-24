@@ -115,7 +115,7 @@ async function initMap() {
     showSpinner(false);
     getStations();
     const resultNearest = nearestStations(verifyTransportOption(), {lat: currLocation.lat, lon: currLocation.lon}); // Estaciones mas cercanas
-    console.log(resultNearest);
+    showNearestStations(resultNearest); // Mostrar listado de 5 estaciones cercanas
 }
 
 // Verificar que opcion de transporte esta activa para cargar ubicaciones
@@ -160,7 +160,7 @@ async function updateCurrentLocation() {
     updateViewPositionMap(currLocation.lat, currLocation.lon);
     showSpinner(false);
     const resultNearest = nearestStations(verifyTransportOption(), {lat: currLocation.lat, lon: currLocation.lon}); // Estaciones mas cercanas
-    console.log(resultNearest);
+    showNearestStations(resultNearest); // Actualizar botones de estaciones cercanas
 }
 
 // Obtiene las coordenadas de la ubicacion indicada en el input
@@ -182,39 +182,6 @@ async function getInputLocation(inputLocation) {
     }
 }
 
-// ---------------- Funcion de pruebas
-function auxiliar(inputCoords, stations) {
-    let raza;
-    let poli;
-    let oce;
-    let tac;
-    stations.forEach(station => {
-        let name = Object.keys(station)[0];
-        if (name=="La Raza") {
-            raza = [station[name][0], station[name][1]] // lat, lon
-        }
-        if (name=="Politécnico") {
-            poli = [station[name][0], station[name][1]] // lat, lon
-        }
-        if (name=="Oceanía") {
-            oce = [station[name][0], station[name][1]] // lat, lon
-        }
-        if (name=="Tacubaya") {
-            tac = [station[name][0], station[name][1]] // lat, lon
-        }
-    });
-    let dist1 = haversineDist(inputCoords.lat, inputCoords.lon, raza[0], raza[1]);
-    let dist2 = haversineDist(inputCoords.lat, inputCoords.lon, oce[0], oce[1]);
-    if(dist1<dist2) {
-        console.log("raza");
-    } else {
-        console.log("oce");
-    }
-    let dist3 = haversineDist(inputCoords.lat, inputCoords.lon, tac[0], tac[1]);
-    console.log(`tac=${dist3}`);
-    console.log(`raza=${dist1}`);
-}
-
 // Crea los markers para la ubicacion ingresa
 async function showInputLocation() {
     showSpinner(true);
@@ -226,7 +193,7 @@ async function showInputLocation() {
     updateViewPositionMap(inputCoords.lat, inputCoords.lon);
     showSpinner(false);
     const resultNearest = nearestStations(verifyTransportOption(), {lat: inputCoords.lat, lon: inputCoords.lon}); // Estaciones mas cercanas
-    console.log(resultNearest);
+    showNearestStations(resultNearest); // Mostrar botones de estaciones cercanas
 }
 
 // Funcion para obtener la distancia entre dos ubicaciones
@@ -247,14 +214,14 @@ function haversineDist(lat1, lon1, lat2, lon2) {
 }
 
 // Eliminar el punto con mayor distancia y encontrar el nuevo punto con la mayor distancia
-function updateNearStations(nearStationsMap, maxDistance, newStationName, newStationDistance) { // Recibe un map con las estaciones y un map con la estacion con distancia maxima
+function updateNearStations(nearStationsMap, maxDistance, newStationName, values) { // Recibe un map con las estaciones y un map con la estacion con distancia maxima
     nearStationsMap.delete(Object.keys(maxDistance)[0]); // Borrar el elemento maximo
-    nearStationsMap.set(newStationName, newStationDistance); // Agregar el nuevo elemento
+    nearStationsMap.set(newStationName, values); // Agregar el nuevo elemento, values =[distance, {lat:lat, lon:lon}]
     maxDistance = {"max":0.0};
-    for (let [key, value] of nearStationsMap) { // Encontrar el nuevo maximo
-        if(value > Object.values(maxDistance)[0]) {
+    for (let [key, values] of nearStationsMap) { // Encontrar el nuevo maximo, values=[distance, {lat:lat, lon:lon}]
+        if(values[0] > Object.values(maxDistance)[0]) { // Comparando distancias
             // Se encontro nuevo maximo
-            maxDistance = {[key]: value};
+            maxDistance = {[key]: values[0]};
         }
     }
     return [nearStationsMap, maxDistance] // Regresa [conjunto_estaciones, estacion_maxima_distancia]
@@ -265,26 +232,37 @@ function updateNearStations(nearStationsMap, maxDistance, newStationName, newSta
 function nearestStations(stations, location) { // location debes ser un hashmap con {lon:value, lat:value}
     let nearStations = new Map();
     let maxDistance = {"max": 0.0}; // llave-valor para el elemento con maxima distancia
-    let cont = 0;
     stations.forEach(station => {
         const name = Object.keys(station)[0];
         const lat = station[name][0];
         const lon = station[name][1];
         let distance = haversineDist(location.lat, location.lon, lat, lon);
+        const values = [distance, {lat:lat, lon:lon}];
         if(nearStations.size<5) {
             // Llenar lista con 5 ubicaciones
             maxDistance = (distance > Object.values(maxDistance)[0]) ? {[name]:distance} : maxDistance; // Asignar la estacion con mayor distancia
-            nearStations.set(name, distance);
+            nearStations.set(name, values); // values = [distancia, {lat, lon}]
         } else {
             // Actualizar lista cuando este llena segun su distancia;
             if (distance < Object.values(maxDistance)[0]) {
-                const res = updateNearStations(nearStations, maxDistance, name, distance);
+                const res = updateNearStations(nearStations, maxDistance, name, values);
                 nearStations = res[0]; // Desempaquetar el resultado
                 maxDistance = res[1];
             }
         }
     });
     return nearStations;
+}
+
+function showNearestStations(stations) {
+    const section = document.getElementById("nearest_stations");
+    section.innerHTML = `<h3 class="mb-3">Estaciones cercanas</h3>`;
+    section.innerHTML += `<div id="content_section" class="d-flex flex-wrap gap-2 mb-4"></div>`;
+    const classButton = "card card-body bg-light";
+    for (let [key, values] of stations) {
+        const onClick = `updateViewPositionMap(${values[1].lat}, ${values[1].lon})`;
+        document.getElementById("content_section").innerHTML += `<button class="${classButton}" onclick="${onClick}">${key}</button>`;
+    }
 }
 
 initMap();
