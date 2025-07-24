@@ -36,3 +36,42 @@
 .radio-container input {
     cursor: pointer;
 }
+
+.button-hover-efecto {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    position: relative; /* Necesario para aplicar z-index */
+    z-index: 1;
+}
+
+.button-hover-efecto:hover {
+    transform: scale(1.08);
+    box-shadow: 0 14px 8px rgba(0,0,0,0.2);
+    z-index: 10;
+    color: white;
+}
+
+.efecto-button-glow {
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+  transition: transform 0.3s ease;
+}
+
+.efecto-button-glow::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 600px;
+  height: 600px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, var(--btn-color-main) 0%, var(--btn-color-main) 70%);
+  opacity: 0;
+  z-index: -1;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.efecto-button-glow:hover::before {
+  opacity: 1;
+}

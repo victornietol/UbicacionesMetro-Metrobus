@@ -258,7 +258,7 @@ function showNearestStations(stations) {
     const section = document.getElementById("nearest_stations");
     section.innerHTML = `<h3 class="mb-3">Estaciones cercanas</h3>`;
     section.innerHTML += `<div id="content_section" class="d-flex flex-wrap gap-2 mb-4"></div>`;
-    const classButton = "card card-body bg-light";
+    const classButton = "card card-body bg-light button-hover-efecto efecto-button-glow";
     for (let [key, values] of stations) {
         const onClick = `updateViewPositionMap(${values[1].lat}, ${values[1].lon})`;
         document.getElementById("content_section").innerHTML += `<button class="${classButton}" onclick="${onClick}">${key}</button>`;
