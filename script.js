@@ -108,13 +108,14 @@ async function initMap() {
         attribution: '© OpenStreetMap contributors'
     }).addTo(map);
     markerGroup = L.layerGroup().addTo(map);
-
     stationsMetro = await readJSON("info/estaciones_metro_cdmx.json"); // Obtener estaciones del Metro, cargar al iniciar
     createMarkersStations(stationsMetro, map, markerGroup); // Crear markers de las estaciones del Metro
     addCircleMarker(currLocation.lat, currLocation.lon, "<b>Tu ubicación</b>", map, markerGroup); // Crear marker de mi ubicacion actual
     updateViewPositionMap(currLocation.lat, currLocation.lon); // Centrar la vista en la posicion actual
     showSpinner(false);
     getStations();
+    const resultNearest = nearestStations(verifyTransportOption(), {lat: currLocation.lat, lon: currLocation.lon}); // Estaciones mas cercanas
+    console.log(resultNearest);
 }
 
 // Verificar que opcion de transporte esta activa para cargar ubicaciones
@@ -158,6 +159,8 @@ async function updateCurrentLocation() {
     addCircleMarker(currLocation.lat, currLocation.lon, "<b>Tu ubicación</b>", map, markerGroup) // Agregando marker actual
     updateViewPositionMap(currLocation.lat, currLocation.lon);
     showSpinner(false);
+    const resultNearest = nearestStations(verifyTransportOption(), {lat: currLocation.lat, lon: currLocation.lon}); // Estaciones mas cercanas
+    console.log(resultNearest);
 }
 
 // Obtiene las coordenadas de la ubicacion indicada en el input
@@ -169,7 +172,7 @@ async function getInputLocation(inputLocation) {
         const data = await res.json();
 
         if (data.length > 0) {
-            return { lat: data[0].lat, lon: data[0].lon };
+            return { lat: Number(data[0].lat), lon: Number(data[0].lon) };
         } else {
             return { lat: "", lon: "" };
         }
@@ -177,6 +180,39 @@ async function getInputLocation(inputLocation) {
         document.getElementById("error_current_ubi").innerText = "Error al buscar la ubicación";
         return { lat: "Error en la solicitud", lon: "Error en la solicitud" };
     }
+}
+
+// ---------------- Funcion de pruebas
+function auxiliar(inputCoords, stations) {
+    let raza;
+    let poli;
+    let oce;
+    let tac;
+    stations.forEach(station => {
+        let name = Object.keys(station)[0];
+        if (name=="La Raza") {
+            raza = [station[name][0], station[name][1]] // lat, lon
+        }
+        if (name=="Politécnico") {
+            poli = [station[name][0], station[name][1]] // lat, lon
+        }
+        if (name=="Oceanía") {
+            oce = [station[name][0], station[name][1]] // lat, lon
+        }
+        if (name=="Tacubaya") {
+            tac = [station[name][0], station[name][1]] // lat, lon
+        }
+    });
+    let dist1 = haversineDist(inputCoords.lat, inputCoords.lon, raza[0], raza[1]);
+    let dist2 = haversineDist(inputCoords.lat, inputCoords.lon, oce[0], oce[1]);
+    if(dist1<dist2) {
+        console.log("raza");
+    } else {
+        console.log("oce");
+    }
+    let dist3 = haversineDist(inputCoords.lat, inputCoords.lon, tac[0], tac[1]);
+    console.log(`tac=${dist3}`);
+    console.log(`raza=${dist1}`);
 }
 
 // Crea los markers para la ubicacion ingresa
@@ -189,8 +225,66 @@ async function showInputLocation() {
     addCircleMarker(inputCoords.lat, inputCoords.lon, "<b>Ubicación aproximada indicada.</b>", map, markerGroup) // Creando marker de posicion indicada
     updateViewPositionMap(inputCoords.lat, inputCoords.lon);
     showSpinner(false);
+    const resultNearest = nearestStations(verifyTransportOption(), {lat: inputCoords.lat, lon: inputCoords.lon}); // Estaciones mas cercanas
+    console.log(resultNearest);
+}
+
+// Funcion para obtener la distancia entre dos ubicaciones
+function toRad(degrees) {
+    return degrees * Math.PI/180;
+}
+function haversineDist(lat1, lon1, lat2, lon2) {
+    const R = 6371; // Radio deL planeta en km
+    const dLat = toRad(lat2 - lat1);
+    const dLon = toRad(lon2 - lon1);
+    const lat1Rad = toRad(lat1);
+    const lat2Rad = toRad(lat2);
+    const a = Math.sin(dLat/2) ** 2 +
+              Math.cos(lat1Rad) * Math.cos(lat2Rad) *
+              Math.sin(dLon/2) ** 2;
+    const c = 2*Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+    return R*c; // distancia en km
+}
+
+// Eliminar el punto con mayor distancia y encontrar el nuevo punto con la mayor distancia
+function updateNearStations(nearStationsMap, maxDistance, newStationName, newStationDistance) { // Recibe un map con las estaciones y un map con la estacion con distancia maxima
+    nearStationsMap.delete(Object.keys(maxDistance)[0]); // Borrar el elemento maximo
+    nearStationsMap.set(newStationName, newStationDistance); // Agregar el nuevo elemento
+    maxDistance = {"max":0.0};
+    for (let [key, value] of nearStationsMap) { // Encontrar el nuevo maximo
+        if(value > Object.values(maxDistance)[0]) {
+            // Se encontro nuevo maximo
+            maxDistance = {[key]: value};
+        }
+    }
+    return [nearStationsMap, maxDistance] // Regresa [conjunto_estaciones, estacion_maxima_distancia]
 }
 
 
+// Funcion para recorrer una por una cada estacion de metrobus o metro y buscar las 5 direcciones mas cercanas
+function nearestStations(stations, location) { // location debes ser un hashmap con {lon:value, lat:value}
+    let nearStations = new Map();
+    let maxDistance = {"max": 0.0}; // llave-valor para el elemento con maxima distancia
+    let cont = 0;
+    stations.forEach(station => {
+        const name = Object.keys(station)[0];
+        const lat = station[name][0];
+        const lon = station[name][1];
+        let distance = haversineDist(location.lat, location.lon, lat, lon);
+        if(nearStations.size<5) {
+            // Llenar lista con 5 ubicaciones
+            maxDistance = (distance > Object.values(maxDistance)[0]) ? {[name]:distance} : maxDistance; // Asignar la estacion con mayor distancia
+            nearStations.set(name, distance);
+        } else {
+            // Actualizar lista cuando este llena segun su distancia;
+            if (distance < Object.values(maxDistance)[0]) {
+                const res = updateNearStations(nearStations, maxDistance, name, distance);
+                nearStations = res[0]; // Desempaquetar el resultado
+                maxDistance = res[1];
+            }
+        }
+    });
+    return nearStations;
+}
 
 initMap();
