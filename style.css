@@ -75,3 +75,151 @@
 .efecto-button-glow:hover::before {
   opacity: 1;
 }
+
+.sub-img {
+    color: rgb(138, 137, 137);
+}
+
+.sub-img a {
+    all: unset;
+    cursor: pointer;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.2); /* fondo */
+    background-size: 100% 100%;
+    border-radius: 50%;
+}
+
+.linea1 {
+    color: white !important;
+    font-weight: bold;
+    background-color: #e9468f !important;
+    text-shadow:
+    -1px -1px 0 black,
+     1px -1px 0 black,
+    -1px  1px 0 black,
+     1px  1px 0 black;
+}
+
+.linea2 {
+    color: white !important;
+    font-weight: bold;
+    background-color: #00599f !important;
+    text-shadow:
+    -1px -1px 0 black,
+     1px -1px 0 black,
+    -1px  1px 0 black,
+     1px  1px 0 black;
+}
+
+.linea3 {
+    color: white !important;
+    font-weight: bold;
+    background-color: #b69c13 !important;
+    text-shadow:
+    -1px -1px 0 black,
+     1px -1px 0 black,
+    -1px  1px 0 black,
+     1px  1px 0 black;
+}
+
+.linea4 {
+    color: white !important;
+    font-weight: bold;
+    background-color: #6cbab1 !important;
+    text-shadow:
+    -1px -1px 0 black,
+     1px -1px 0 black,
+    -1px  1px 0 black,
+     1px  1px 0 black;
+}
+
+.linea5 {
+    color: white !important;
+    font-weight: bold;
+    background-color: #fdd200 !important;
+    text-shadow:
+    -1px -1px 0 black,
+     1px -1px 0 black,
+    -1px  1px 0 black,
+     1px  1px 0 black;
+}
+
+.linea6 {
+    color: white !important;
+    font-weight: bold;
+    background-color: #da1715 !important;
+    text-shadow:
+    -1px -1px 0 black,
+     1px -1px 0 black,
+    -1px  1px 0 black,
+     1px  1px 0 black;
+}
+
+.linea7 {
+    color: white !important;
+    font-weight: bold;
+    background-color: #e97009 !important;
+    text-shadow:
+    -1px -1px 0 black,
+     1px -1px 0 black,
+    -1px  1px 0 black,
+     1px  1px 0 black;
+}
+
+.linea8 {
+    color: white !important;
+    font-weight: bold;
+    background-color: #008e3d !important;
+    text-shadow:
+    -1px -1px 0 black,
+     1px -1px 0 black,
+    -1px  1px 0 black,
+     1px  1px 0 black;
+}
+
+.linea9 {
+    color: white !important;
+    font-weight: bold;
+    background-color: #5b352e !important;
+    text-shadow:
+    -1px -1px 0 black,
+     1px -1px 0 black,
+    -1px  1px 0 black,
+     1px  1px 0 black;
+}
+
+.linea12 {
+    color: white !important;
+    font-weight: bold;
+    background-color: #c49955 !important;
+    text-shadow:
+    -1px -1px 0 black,
+     1px -1px 0 black,
+    -1px  1px 0 black,
+     1px  1px 0 black;
+}
+
+.lineaA {
+    color: white !important;
+    font-weight: bold;
+    background-color: #9e1a81 !important;
+    text-shadow:
+    -1px -1px 0 black,
+     1px -1px 0 black,
+    -1px  1px 0 black,
+     1px  1px 0 black;
+}
+
+.lineaB {
+    color: white !important;
+    font-weight: bold;
+    background: linear-gradient(to bottom, #077f4a 50%, #b9b9b7 50%);
+    text-shadow:
+    -1px -1px 0 black,
+     1px -1px 0 black,
+    -1px  1px 0 black,
+     1px  1px 0 black;
+}

@@ -1,0 +1,782 @@
+[
+  {
+    "nombre": "Pantitlán",
+    "linea": "01"
+  },
+  {
+    "nombre": "Zaragoza",
+    "linea": "01"
+  },
+  {
+    "nombre": "Gomez Farías",
+    "linea": "01"
+  },
+  {
+    "nombre": "Boulevard Puerto Aéreo",
+    "linea": "01"
+  },
+  {
+    "nombre": "Balbuena",
+    "linea": "01"
+  },
+  {
+    "nombre": "Moctezuma",
+    "linea": "01"
+  },
+  {
+    "nombre": "San Lázaro",
+    "linea": "01"
+  },
+  {
+    "nombre": "Candelaria",
+    "linea": "01"
+  },
+  {
+    "nombre": "Merced",
+    "linea": "01"
+  },
+  {
+    "nombre": "Pino Suárez",
+    "linea": "01"
+  },
+  {
+    "nombre": "Isabel La Católica",
+    "linea": "01"
+  },
+  {
+    "nombre": "Salto del Agua",
+    "linea": "01"
+  },
+  {
+    "nombre": "Balderas",
+    "linea": "01"
+  },
+  {
+    "nombre": "Cuauhtémoc",
+    "linea": "01"
+  },
+  {
+    "nombre": "Insurgentes",
+    "linea": "01"
+  },
+  {
+    "nombre": "Sevilla",
+    "linea": "01"
+  },
+  {
+    "nombre": "Chapultepec",
+    "linea": "01"
+  },
+  {
+    "nombre": "Juanacatlán",
+    "linea": "01"
+  },
+  {
+    "nombre": "Tacubaya",
+    "linea": "01"
+  },
+  {
+    "nombre": "Observatorio",
+    "linea": "01"
+  },
+  {
+    "nombre": "Cuatro Caminos",
+    "linea": "02"
+  },
+  {
+    "nombre": "Panteones",
+    "linea": "02"
+  },
+  {
+    "nombre": "Tacuba",
+    "linea": "02"
+  },
+  {
+    "nombre": "Cuitláhuac",
+    "linea": "02"
+  },
+  {
+    "nombre": "Popotla",
+    "linea": "02"
+  },
+  {
+    "nombre": "Colegio Militar",
+    "linea": "02"
+  },
+  {
+    "nombre": "Normal",
+    "linea": "02"
+  },
+  {
+    "nombre": "San Cosme",
+    "linea": "02"
+  },
+  {
+    "nombre": "Revolución",
+    "linea": "02"
+  },
+  {
+    "nombre": "Hidalgo",
+    "linea": "02"
+  },
+  {
+    "nombre": "Bellas Artes",
+    "linea": "02"
+  },
+  {
+    "nombre": "Allende",
+    "linea": "02"
+  },
+  {
+    "nombre": "Zócalo/Tenochtitlan",
+    "linea": "02"
+  },
+  {
+    "nombre": "Pino Suárez",
+    "linea": "02"
+  },
+  {
+    "nombre": "San Antonio Abad",
+    "linea": "02"
+  },
+  {
+    "nombre": "Chabacano",
+    "linea": "02"
+  },
+  {
+    "nombre": "Viaducto",
+    "linea": "02"
+  },
+  {
+    "nombre": "Xola",
+    "linea": "02"
+  },
+  {
+    "nombre": "Villa de Cortés",
+    "linea": "02"
+  },
+  {
+    "nombre": "Nativitas",
+    "linea": "02"
+  },
+  {
+    "nombre": "Portales",
+    "linea": "02"
+  },
+  {
+    "nombre": "Ermita",
+    "linea": "02"
+  },
+  {
+    "nombre": "General Anaya",
+    "linea": "02"
+  },
+  {
+    "nombre": "Tasqueña",
+    "linea": "02"
+  },
+  {
+    "nombre": "Indios Verdes",
+    "linea": "03"
+  },
+  {
+    "nombre": "Deportivo 18 de Marzo",
+    "linea": "03"
+  },
+  {
+    "nombre": "Potrero",
+    "linea": "03"
+  },
+  {
+    "nombre": "La Raza",
+    "linea": "03"
+  },
+  {
+    "nombre": "Tlatelolco",
+    "linea": "03"
+  },
+  {
+    "nombre": "Guerrero",
+    "linea": "03"
+  },
+  {
+    "nombre": "Hidalgo",
+    "linea": "03"
+  },
+  {
+    "nombre": "Juárez",
+    "linea": "03"
+  },
+  {
+    "nombre": "Balderas",
+    "linea": "03"
+  },
+  {
+    "nombre": "Niños Héroes/Poder Judicial CDMX",
+    "linea": "03"
+  },
+  {
+    "nombre": "Hospital General",
+    "linea": "03"
+  },
+  {
+    "nombre": "Centro Médico",
+    "linea": "03"
+  },
+  {
+    "nombre": "Etiopía/Plaza de la Transparencia",
+    "linea": "03"
+  },
+  {
+    "nombre": "Eugenia",
+    "linea": "03"
+  },
+  {
+    "nombre": "División del Norte",
+    "linea": "03"
+  },
+  {
+    "nombre": "Zapata",
+    "linea": "03"
+  },
+  {
+    "nombre": "Coyoacán",
+    "linea": "03"
+  },
+  {
+    "nombre": "Viveros/Derechos Humanos",
+    "linea": "03"
+  },
+  {
+    "nombre": "Miguel Ángel de Quevedo",
+    "linea": "03"
+  },
+  {
+    "nombre": "Copilco",
+    "linea": "03"
+  },
+  {
+    "nombre": "Universidad",
+    "linea": "03"
+  },
+  {
+    "nombre": "Santa Anita",
+    "linea": "04"
+  },
+  {
+    "nombre": "Jamaica",
+    "linea": "04"
+  },
+  {
+    "nombre": "Fray Servando",
+    "linea": "04"
+  },
+  {
+    "nombre": "Candelaria",
+    "linea": "04"
+  },
+  {
+    "nombre": "Morelos",
+    "linea": "04"
+  },
+  {
+    "nombre": "Canal del Norte",
+    "linea": "04"
+  },
+  {
+    "nombre": "Consulado",
+    "linea": "04"
+  },
+  {
+    "nombre": "Bondojito",
+    "linea": "04"
+  },
+  {
+    "nombre": "Talismán",
+    "linea": "04"
+  },
+  {
+    "nombre": "Martín Carrera",
+    "linea": "04"
+  },
+  {
+    "nombre": "Politécnico",
+    "linea": "05"
+  },
+  {
+    "nombre": "Instituto del Petróleo",
+    "linea": "05"
+  },
+  {
+    "nombre": "Autobuses del Norte",
+    "linea": "05"
+  },
+  {
+    "nombre": "La Raza",
+    "linea": "05"
+  },
+  {
+    "nombre": "Misterios",
+    "linea": "05"
+  },
+  {
+    "nombre": "Valle Gómez",
+    "linea": "05"
+  },
+  {
+    "nombre": "Consulado",
+    "linea": "05"
+  },
+  {
+    "nombre": "Eduardo Molina",
+    "linea": "05"
+  },
+  {
+    "nombre": "Aragón",
+    "linea": "05"
+  },
+  {
+    "nombre": "Oceanía",
+    "linea": "05"
+  },
+  {
+    "nombre": "Terminal Aérea",
+    "linea": "05"
+  },
+  {
+    "nombre": "Hangares",
+    "linea": "05"
+  },
+  {
+    "nombre": "Pantitlán",
+    "linea": "05"
+  },
+  {
+    "nombre": "El Rosario",
+    "linea": "06"
+  },
+  {
+    "nombre": "Tezozómoc",
+    "linea": "06"
+  },
+  {
+    "nombre": "UAM Azcapotzalco",
+    "linea": "06"
+  },
+  {
+    "nombre": "Ferrería/Arena Ciudad de México",
+    "linea": "06"
+  },
+  {
+    "nombre": "Norte 45",
+    "linea": "06"
+  },
+  {
+    "nombre": "Vallejo",
+    "linea": "06"
+  },
+  {
+    "nombre": "Instituto del Petróleo",
+    "linea": "06"
+  },
+  {
+    "nombre": "Lindavista",
+    "linea": "06"
+  },
+  {
+    "nombre": "Deportivo 18 de Marzo",
+    "linea": "06"
+  },
+  {
+    "nombre": "La Villa/Basílica",
+    "linea": "06"
+  },
+  {
+    "nombre": "Martín Carrera",
+    "linea": "06"
+  },
+  {
+    "nombre": "El Rosario",
+    "linea": "07"
+  },
+  {
+    "nombre": "Aquiles Serdán",
+    "linea": "07"
+  },
+  {
+    "nombre": "Camarones",
+    "linea": "07"
+  },
+  {
+    "nombre": "Refinería",
+    "linea": "07"
+  },
+  {
+    "nombre": "Tacuba",
+    "linea": "07"
+  },
+  {
+    "nombre": "San Joaquín",
+    "linea": "07"
+  },
+  {
+    "nombre": "Polanco",
+    "linea": "07"
+  },
+  {
+    "nombre": "Auditorio",
+    "linea": "07"
+  },
+  {
+    "nombre": "Constituyentes",
+    "linea": "07"
+  },
+  {
+    "nombre": "Tacubaya",
+    "linea": "07"
+  },
+  {
+    "nombre": "San Pedro de Los Pinos",
+    "linea": "07"
+  },
+  {
+    "nombre": "San Antonio",
+    "linea": "07"
+  },
+  {
+    "nombre": "Mixcoac",
+    "linea": "07"
+  },
+  {
+    "nombre": "Barranca del Muerto",
+    "linea": "07"
+  },
+  {
+    "nombre": "Garibaldi/Lagunilla",
+    "linea": "08"
+  },
+  {
+    "nombre": "Bellas Artes",
+    "linea": "08"
+  },
+  {
+    "nombre": "San Juan de Letrán",
+    "linea": "08"
+  },
+  {
+    "nombre": "Salto del Agua",
+    "linea": "08"
+  },
+  {
+    "nombre": "Doctores",
+    "linea": "08"
+  },
+  {
+    "nombre": "Obrera",
+    "linea": "08"
+  },
+  {
+    "nombre": "Chabacano",
+    "linea": "08"
+  },
+  {
+    "nombre": "La Viga",
+    "linea": "08"
+  },
+  {
+    "nombre": "Santa Anita",
+    "linea": "08"
+  },
+  {
+    "nombre": "Coyuya",
+    "linea": "08"
+  },
+  {
+    "nombre": "Iztacalco",
+    "linea": "08"
+  },
+  {
+    "nombre": "Apatlaco",
+    "linea": "08"
+  },
+  {
+    "nombre": "Aculco",
+    "linea": "08"
+  },
+  {
+    "nombre": "Escuadrón 201",
+    "linea": "08"
+  },
+  {
+    "nombre": "Atlalilco",
+    "linea": "08"
+  },
+  {
+    "nombre": "Iztapalapa",
+    "linea": "08"
+  },
+  {
+    "nombre": "Cerro de la Estrella",
+    "linea": "08"
+  },
+  {
+    "nombre": "UAM-I",
+    "linea": "08"
+  },
+  {
+    "nombre": "Constitución de 1917",
+    "linea": "08"
+  },
+  {
+    "nombre": "Pantitlán",
+    "linea": "09"
+  },
+  {
+    "nombre": "Puebla",
+    "linea": "09"
+  },
+  {
+    "nombre": "Ciudad Deportiva",
+    "linea": "09"
+  },
+  {
+    "nombre": "Velódromo",
+    "linea": "09"
+  },
+  {
+    "nombre": "Mixhiuca",
+    "linea": "09"
+  },
+  {
+    "nombre": "Jamaica",
+    "linea": "09"
+  },
+  {
+    "nombre": "Chabacano",
+    "linea": "09"
+  },
+  {
+    "nombre": "Lázaro Cárdenas",
+    "linea": "09"
+  },
+  {
+    "nombre": "Centro Médico",
+    "linea": "09"
+  },
+  {
+    "nombre": "Chilpancingo",
+    "linea": "09"
+  },
+  {
+    "nombre": "Patriotismo",
+    "linea": "09"
+  },
+  {
+    "nombre": "Tacubaya",
+    "linea": "09"
+  },
+  {
+    "nombre": "Tláhuac",
+    "linea": "12"
+  },
+  {
+    "nombre": "Tlaltenco",
+    "linea": "12"
+  },
+  {
+    "nombre": "Zapotitlán",
+    "linea": "12"
+  },
+  {
+    "nombre": "Nopalera",
+    "linea": "12"
+  },
+  {
+    "nombre": "Olivos",
+    "linea": "12"
+  },
+  {
+    "nombre": "Tezonco",
+    "linea": "12"
+  },
+  {
+    "nombre": "Periferico Oriente",
+    "linea": "12"
+  },
+  {
+    "nombre": "Calle 11",
+    "linea": "12"
+  },
+  {
+    "nombre": "Lomas Estrella",
+    "linea": "12"
+  },
+  {
+    "nombre": "San Andres Tomatlán",
+    "linea": "12"
+  },
+  {
+    "nombre": "Culhuacán",
+    "linea": "12"
+  },
+  {
+    "nombre": "Atlalilco",
+    "linea": "12"
+  },
+  {
+    "nombre": "Mexicaltzingo",
+    "linea": "12"
+  },
+  {
+    "nombre": "Ermita",
+    "linea": "12"
+  },
+  {
+    "nombre": "Eje Central",
+    "linea": "12"
+  },
+  {
+    "nombre": "Parque de los Venados",
+    "linea": "12"
+  },
+  {
+    "nombre": "Zapata",
+    "linea": "12"
+  },
+  {
+    "nombre": "Hospital 20 de Noviembre",
+    "linea": "12"
+  },
+  {
+    "nombre": "Insurgentes Sur",
+    "linea": "12"
+  },
+  {
+    "nombre": "Mixcoac",
+    "linea": "12"
+  },
+  {
+    "nombre": "Pantitlán",
+    "linea": "A"
+  },
+  {
+    "nombre": "Agrícola Oriental",
+    "linea": "A"
+  },
+  {
+    "nombre": "Canal de San Juan",
+    "linea": "A"
+  },
+  {
+    "nombre": "Tepalcates",
+    "linea": "A"
+  },
+  {
+    "nombre": "Guelatao",
+    "linea": "A"
+  },
+  {
+    "nombre": "Peñón Viejo",
+    "linea": "A"
+  },
+  {
+    "nombre": "Acatitla",
+    "linea": "A"
+  },
+  {
+    "nombre": "Santa Marta",
+    "linea": "A"
+  },
+  {
+    "nombre": "Los Reyes",
+    "linea": "A"
+  },
+  {
+    "nombre": "La Paz",
+    "linea": "A"
+  },
+  {
+    "nombre": "Buenavista",
+    "linea": "B"
+  },
+  {
+    "nombre": "Guerrero",
+    "linea": "B"
+  },
+  {
+    "nombre": "Garibaldi/Lagunilla",
+    "linea": "B"
+  },
+  {
+    "nombre": "Lagunilla",
+    "linea": "B"
+  },
+  {
+    "nombre": "Tepito",
+    "linea": "B"
+  },
+  {
+    "nombre": "Morelos",
+    "linea": "B"
+  },
+  {
+    "nombre": "San Lázaro",
+    "linea": "B"
+  },
+  {
+    "nombre": "Ricardo Flores Magón",
+    "linea": "B"
+  },
+  {
+    "nombre": "Romero Rubio",
+    "linea": "B"
+  },
+  {
+    "nombre": "Oceanía",
+    "linea": "B"
+  },
+  {
+    "nombre": "Deportivo Oceanía",
+    "linea": "B"
+  },
+  {
+    "nombre": "Bosque de Aragón",
+    "linea": "B"
+  },
+  {
+    "nombre": "Villa de Aragón",
+    "linea": "B"
+  },
+  {
+    "nombre": "Nezahualcóyotl",
+    "linea": "B"
+  },
+  {
+    "nombre": "Impulsora",
+    "linea": "B"
+  },
+  {
+    "nombre": "Río de los Remedios",
+    "linea": "B"
+  },
+  {
+    "nombre": "Múzquiz",
+    "linea": "B"
+  },
+  {
+    "nombre": "Ecatepec",
+    "linea": "B"
+  },
+  {
+    "nombre": "Olímpica",
+    "linea": "B"
+  },
+  {
+    "nombre": "Plaza Aragón",
+    "linea": "B"
+  },
+  {
+    "nombre": "Ciudad Azteca",
+    "linea": "B"
+  }
+]

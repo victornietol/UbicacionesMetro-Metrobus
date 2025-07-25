@@ -254,6 +254,7 @@ function nearestStations(stations, location) { // location debes ser un hashmap 
     return nearStations;
 }
 
+// Mostrar las estaciones cercanas
 function showNearestStations(stations) {
     const section = document.getElementById("nearest_stations");
     section.innerHTML = `<h3 class="mb-3">Estaciones cercanas</h3>`;
