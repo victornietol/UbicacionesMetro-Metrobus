@@ -6,6 +6,8 @@
     <title>Ubicaciones METRO y METROBUS | Metro</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 </head>
 <body class="d-flex flex-column min-vh-100">
 
@@ -45,7 +47,7 @@
 
     
     <main class="container flex-grow-1">
-        <h1 class="text-center mt-4">Estaciones Metro</h1>
+        <h1 class="text-center mt-4">Mapa Metro</h1>
 
         <div id="carousel" class="carousel slide mt-4" data-bs-ride="carousel">
             <div class="carousel-inner">
@@ -108,6 +110,10 @@
             <h4>Línea B</h4>
             <div id="lineaB" class="d-flex flex-wrap gap-2 mb-4"></div>
         </div>
+
+        <button id="btn-subir" title="Subir al inicio de la página" class="btn btn-light position-fixed bottom-0 end-0 m-3 rounded animate__animated animate__backInUp" style="display: none; width: 45px; height: 45px;">
+            <i class="bi bi-arrow-up"></i>
+        </button>
 
     </main>
 

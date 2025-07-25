@@ -223,3 +223,8 @@
     -1px  1px 0 black,
      1px  1px 0 black;
 }
+
+#btn-subir {
+    background-color: rgba(230, 229, 229, 0.9);
+    border: none;
+}

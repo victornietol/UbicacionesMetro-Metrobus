@@ -1,3 +1,13 @@
+// Boton para subir al inicio de la pagina
+const btnSubir = document.getElementById("btn-subir");
+window.addEventListener("scroll", () => {
+    btnSubir.style.display = window.scrollY > 300 ? "block" : "none";
+});
+
+btnSubir.addEventListener("click", () => {
+    document.documentElement.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
 // Leer archivo json con estaciones
 async function readJSON(route) {
     return fetch(route).then(response => {
