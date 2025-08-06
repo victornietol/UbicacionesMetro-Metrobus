@@ -85,32 +85,140 @@
             *Imagenes obtenidas de <a href="https://metro.cdmx.gob.mx/la-red/mapa-de-la-red" target="_blank">https://metro.cdmx.gob.mx/la-red/mapa-de-la-red</a>
         </p>
 
-        <div class="mt-4">
+        <div class="accordion mt-4 mb-5" id="acordeonLineas">
             <h3 class="mb-4">Estaciones por línea</h3>
-            <h4>Línea 1</h4>
-            <div id="linea1" class="d-flex flex-wrap gap-2 mb-4"></div>
-            <h4>Línea 2</h4>
-            <div id="linea2" class="d-flex flex-wrap gap-2 mb-4"></div>
-            <h4>Línea 3</h4>
-            <div id="linea3" class="d-flex flex-wrap gap-2 mb-4"></div>
-            <h4>Línea 4</h4>
-            <div id="linea4" class="d-flex flex-wrap gap-2 mb-4"></div>
-            <h4>Línea 5</h4>
-            <div id="linea5" class="d-flex flex-wrap gap-2 mb-4"></div>
-            <h4>Línea 6</h4>
-            <div id="linea6" class="d-flex flex-wrap gap-2 mb-4"></div>
-            <h4>Línea 7</h4>
-            <div id="linea7" class="d-flex flex-wrap gap-2 mb-4"></div>
-            <h4>Línea 8</h4>
-            <div id="linea8" class="d-flex flex-wrap gap-2 mb-4"></div>
-            <h4>Línea 9</h4>
-            <div id="linea9" class="d-flex flex-wrap gap-2 mb-4"></div>
-            <h4>Línea 12</h4>
-            <div id="linea12" class="d-flex flex-wrap gap-2 mb-4"></div>
-            <h4>Línea A</h4>
-            <div id="lineaA" class="d-flex flex-wrap gap-2 mb-4"></div>
-            <h4>Línea B</h4>
-            <div id="lineaB" class="d-flex flex-wrap gap-2 mb-4"></div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#linea1" aria-expanded="false" aria-controls="linea1">
+                        <h4>Línea 1</h4>
+                    </button>
+                </div>
+                <div id="linea1" class="accordion-collapse collapse" data-bs-parent="#acordeonLineas">
+                    <div class="accordion-body d-flex flex-wrap gap-2"></div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#linea2" aria-expanded="false" aria-controls="linea2">
+                        <h4>Línea 2</h4>
+                    </button>
+                </div>
+                <div id="linea2" class="accordion-collapse collapse" data-bs-parent="#acordeonLineas">
+                    <div class="accordion-body d-flex flex-wrap gap-2"></div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#linea3" aria-expanded="false" aria-controls="linea3">
+                        <h4>Línea 3</h4>
+                    </button>
+                </div>
+                <div id="linea3" class="accordion-collapse collapse" data-bs-parent="#acordeonLineas">
+                    <div class="accordion-body d-flex flex-wrap gap-2"></div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#linea4" aria-expanded="false" aria-controls="linea4">
+                        <h4>Línea 4</h4>
+                    </button>
+                </div>
+                <div id="linea4" class="accordion-collapse collapse" data-bs-parent="#acordeonLineas">
+                    <div class="accordion-body d-flex flex-wrap gap-2"></div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#linea5" aria-expanded="false" aria-controls="linea5">
+                        <h4>Línea 5</h4>
+                    </button>
+                </div>
+                <div id="linea5" class="accordion-collapse collapse" data-bs-parent="#acordeonLineas">
+                    <div class="accordion-body d-flex flex-wrap gap-2"></div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#linea6" aria-expanded="false" aria-controls="linea6">
+                        <h4>Línea 6</h4>
+                    </button>
+                </div>
+                <div id="linea6" class="accordion-collapse collapse" data-bs-parent="#acordeonLineas">
+                    <div class="accordion-body d-flex flex-wrap gap-2"></div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#linea7" aria-expanded="false" aria-controls="linea7">
+                        <h4>Línea 7</h4>
+                    </button>
+                </div>
+                <div id="linea7" class="accordion-collapse collapse" data-bs-parent="#acordeonLineas">
+                    <div class="accordion-body d-flex flex-wrap gap-2"></div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#linea8" aria-expanded="false" aria-controls="linea8">
+                        <h4>Línea 8</h4>
+                    </button>
+                </div>
+                <div id="linea8" class="accordion-collapse collapse" data-bs-parent="#acordeonLineas">
+                    <div class="accordion-body d-flex flex-wrap gap-2"></div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#linea9" aria-expanded="false" aria-controls="linea9">
+                        <h4>Línea 9</h4>
+                    </button>
+                </div>
+                <div id="linea9" class="accordion-collapse collapse" data-bs-parent="#acordeonLineas">
+                    <div class="accordion-body d-flex flex-wrap gap-2"></div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#linea12" aria-expanded="false" aria-controls="linea12">
+                        <h4>Línea 12</h4>
+                    </button>
+                </div>
+                <div id="linea12" class="accordion-collapse collapse" data-bs-parent="#acordeonLineas"">
+                    <div class="accordion-body d-flex flex-wrap gap-2"></div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#lineaA" aria-expanded="false" aria-controls="lineaA">
+                        <h4>Línea A</h4>
+                    </button>
+                </div>
+                <div id="lineaA" class="accordion-collapse collapse" data-bs-parent="#acordeonLineas">
+                    <div class="accordion-body d-flex flex-wrap gap-2"></div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#lineaB" aria-expanded="false" aria-controls="lineaB">
+                        <h4>Línea B</h4>
+                    </button>
+                </div>
+                <div id="lineaB" class="accordion-collapse collapse" data-bs-parent="#acordeonLineas">
+                    <div class="accordion-body d-flex flex-wrap gap-2"></div>
+                </div>
+            </div>
         </div>
 
         <button id="btn-subir" title="Subir al inicio de la página" class="btn btn-light position-fixed bottom-0 end-0 m-3 rounded animate__animated animate__backInUp" style="display: none; width: 45px; height: 45px;">

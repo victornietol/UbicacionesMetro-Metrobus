@@ -23,42 +23,32 @@ function createElementStation(stations) {
     stations.forEach(station => {
         const name = station["nombre"];
         const line = station["linea"];
-        const classInfo = "card card-body text-center"
-        if (line=="01") {
-            document.getElementById("linea1").innerHTML += `<p class="${classInfo} linea1">${name}`;
+        const classInfo = "card card-body text-center";
+        let lineaId = "";
+
+        switch (line) {
+            case "01": lineaId="linea1"; break;
+            case "02": lineaId="linea2"; break;
+            case "03": lineaId="linea3"; break;
+            case "04": lineaId="linea4"; break;
+            case "05": lineaId="linea5"; break;
+            case "06": lineaId="linea6"; break;
+            case "07": lineaId="linea7"; break;
+            case "08": lineaId="linea8"; break;
+            case "09": lineaId="linea9"; break;
+            case "12": lineaId="linea12"; break;
+            case "A": lineaId="lineaA"; break;
+            case "B": lineaId="lineaB"; break;
+            default: return;
         }
-        if (line=="02") {
-            document.getElementById("linea2").innerHTML += `<p class="${classInfo} linea2">${name}`;
-        }
-        if (line=="03") {
-            document.getElementById("linea3").innerHTML += `<p class="${classInfo} linea3">${name}`;
-        }
-        if (line=="04") {
-            document.getElementById("linea4").innerHTML += `<p class="${classInfo} linea4">${name}`;
-        }
-        if (line=="05") {
-            document.getElementById("linea5").innerHTML += `<p class="${classInfo} linea5">${name}`;
-        }
-        if (line=="06") {
-            document.getElementById("linea6").innerHTML += `<p class="${classInfo} linea6">${name}`;
-        }
-        if (line=="07") {
-            document.getElementById("linea7").innerHTML += `<p class="${classInfo} linea7">${name}`;
-        }
-        if (line=="08") {
-            document.getElementById("linea8").innerHTML += `<p class="${classInfo} linea8">${name}`;
-        }
-        if (line=="09") {
-            document.getElementById("linea9").innerHTML += `<p class="${classInfo} linea9">${name}`;
-        }
-        if (line=="12") {
-            document.getElementById("linea12").innerHTML += `<p class="${classInfo} linea12">${name}`;
-        }
-        if (line=="A") {
-            document.getElementById("lineaA").innerHTML += `<p class="${classInfo} lineaA">${name}`;
-        }
-        if (line=="B") {
-            document.getElementById("lineaB").innerHTML += `<p class="${classInfo} lineaB">${name}`;
+
+        const lineBody = document.querySelector(`#${lineaId} .accordion-body`);
+
+        if(lineBody) {
+            const p = document.createElement("p");
+            p.className = `${classInfo} ${lineaId}`;
+            p.textContent = name;
+            lineBody.appendChild(p);
         }
     });
 }
